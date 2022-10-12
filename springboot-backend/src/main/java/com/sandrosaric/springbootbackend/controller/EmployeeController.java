@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class EmployeeController {
 
     //build create employee REST api
     @PostMapping()
-    public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee){
+    public ResponseEntity<Employee> saveEmployee(@Valid @RequestBody Employee employee){
         return new ResponseEntity<Employee>(this.employeeService.saveEmployee(employee), HttpStatus.CREATED );
     }
 
@@ -40,7 +41,7 @@ public class EmployeeController {
     //build update employee REST api
 
     @PutMapping("{id}")
-    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee,@PathVariable("id") Long employeeId){
+    public ResponseEntity<Employee> updateEmployee(@Valid @RequestBody Employee employee, @PathVariable("id") Long employeeId){
         return new ResponseEntity<Employee>(this.employeeService.updateEmployee(employee,employeeId),HttpStatus.OK);
     }
 
