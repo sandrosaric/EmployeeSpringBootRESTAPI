@@ -46,7 +46,7 @@ public class EmployeeController {
 
 
     //build delete employee REST api
-    @DeleteMapping("{id")
+    @DeleteMapping("{id}")
     public ResponseEntity<String> deleteEmployee(@PathVariable(name="id") Long id){
         this.employeeService.deleteEmployee(id);
         return new ResponseEntity<String>("Resource has been successfully deleted!",HttpStatus.OK);
